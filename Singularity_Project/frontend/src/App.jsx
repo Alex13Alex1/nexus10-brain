@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react'
 // Development: localhost
 const API_URL = import.meta.env.VITE_API_URL || 
   (import.meta.env.PROD 
-    ? 'https://web-production-4f4fb.up.railway.app' 
+    ? 'https://web-production-09eee.up.railway.app' 
     : 'http://127.0.0.1:8000')
 
 // Компонент переключателя темы
