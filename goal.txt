@@ -1,0 +1,14 @@
+Crypto trading bot with CCXT, RSI and Bollinger Bands strategy, CSV trade logging, stop-loss protection, Docker container for 24/7
+
+
+
+
+
+
+
+
+
+
+
+
+

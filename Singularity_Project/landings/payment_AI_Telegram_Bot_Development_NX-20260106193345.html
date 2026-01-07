@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | AI Telegram Bot Development | NEXUS-6</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white min-h-screen">
+    
+    <!-- Header -->
+    <header class="py-6 px-4 border-b border-slate-700/50">
+        <div class="max-w-2xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold">N6</div>
+                <span class="text-xl font-bold">NEXUS-6</span>
+            </div>
+            <span class="text-sm text-slate-400">Secure Payment Portal</span>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="max-w-2xl mx-auto py-12 px-4">
+        
+        <!-- Invoice Card -->
+        <div class="bg-slate-800/50 backdrop-blur rounded-2xl border border-slate-700/50 p-8 mb-8">
+            
+            <!-- Client Info -->
+            <div class="mb-8 pb-6 border-b border-slate-700/50">
+                <p class="text-sm text-slate-400 mb-1">Prepared for</p>
+                <p class="text-xl font-semibold">John Smith</p>
+            </div>
+            
+            <!-- Project Details -->
+            <div class="mb-8">
+                <p class="text-sm text-slate-400 mb-1">Project</p>
+                <h1 class="text-2xl font-bold text-blue-400 mb-2">AI Telegram Bot Development</h1>
+                <p class="text-slate-300">Custom Telegram bot with GPT-4 integration for customer support</p>
+            </div>
+            
+            <!-- Amount -->
+            <div class="bg-slate-900/50 rounded-xl p-6 mb-8 text-center">
+                <p class="text-sm text-slate-500 uppercase tracking-wider mb-2">Amount Due</p>
+                <p class="text-5xl font-bold mono text-green-400">$250.00</p>
+                <p class="text-slate-400 mt-2">USD</p>
+            </div>
+            
+            <!-- Reference -->
+            <div class="flex items-center justify-between text-sm text-slate-400 mb-8">
+                <span>Reference:</span>
+                <code class="bg-slate-900 px-3 py-1 rounded mono">NX-20260106193345</code>
+            </div>
+            
+            <!-- Payment Buttons -->
+            <div class="space-y-3">
+                <p class="text-center text-slate-400 text-sm mb-4">Choose payment method:</p>
+                
+            <a href="https://buy.stripe.com/test_5kQcN4gu04FUa0wfSCaEE00?client_reference_id=NX-20260106193345" target="_blank" 
+               class="block w-full bg-indigo-600 hover:bg-indigo-500 py-4 rounded-xl font-bold transition text-center">
+                💳 Pay with Card (Stripe)
+            </a>
+        
+
+            <a href="https://wise.com/pay/me/advancedmedicinalconsultingltd?amount=250.0&currency=USD&description=REF%3ANX-20260106193345" target="_blank"
+               class="block w-full bg-green-600 hover:bg-green-500 py-4 rounded-xl font-bold transition text-center">
+                🏦 Pay via Bank (Wise)
+            </a>
+        
+
+            <button onclick="showCrypto()" 
+                    class="w-full bg-orange-500 hover:bg-orange-400 py-4 rounded-xl font-bold transition">
+                ₿ Pay with Crypto (USDC/USDT)
+            </button>
+        
+            </div>
+            
+        </div>
+        
+        <!-- What's Included -->
+        <div class="bg-slate-800/30 rounded-xl p-6 border border-slate-700/30">
+            <h3 class="font-semibold mb-4 text-slate-300">✨ What's Included:</h3>
+            <ul class="space-y-2 text-slate-400 text-sm">
+                <li class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> Complete source code with documentation
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> Setup and deployment instructions
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> Up to 3 revisions included
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> 7-day post-delivery support
+                </li>
+            </ul>
+        </div>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="py-6 px-4 text-center text-slate-500 text-sm">
+        <p>Powered by NEXUS-6 Autonomous AI System</p>
+        <p class="mt-1 text-xs">Secure payments • Instant delivery • Professional quality</p>
+    </footer>
+    
+    <!-- Crypto Modal -->
+    
+        <div id="cryptoModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+            <div class="bg-slate-800 rounded-2xl p-6 max-w-lg w-full border border-blue-500/50">
+                <h3 class="text-xl font-bold text-blue-400 mb-4">💎 Crypto Payment</h3>
+                
+                <div class="bg-slate-900 p-4 rounded-xl mb-4">
+                    <p class="text-xs text-slate-500 uppercase mb-1">Network</p>
+                    <p class="text-lg font-bold text-purple-400">Polygon (MATIC)</p>
+                </div>
+                
+                <div class="bg-slate-900 p-4 rounded-xl mb-4">
+                    <p class="text-xs text-slate-500 uppercase mb-1">Token</p>
+                    <p class="text-lg font-bold">USDC or USDT</p>
+                </div>
+                
+                <div class="bg-slate-900 p-4 rounded-xl mb-4">
+                    <p class="text-xs text-slate-500 uppercase mb-1">Amount</p>
+                    <p class="text-2xl font-mono font-bold text-green-400">$250.00</p>
+                </div>
+                
+                <div class="bg-slate-950 p-4 rounded-xl mb-4">
+                    <p class="text-xs text-blue-500 uppercase mb-2">Wallet Address</p>
+                    <code class="text-sm break-all text-blue-200 select-all">0xf244499abff0e7c6939f470de0914fc1c848f308</code>
+                    <button onclick="copyWallet()" class="mt-2 text-xs bg-blue-600 px-3 py-1 rounded">
+                        📋 Copy
+                    </button>
+                </div>
+                
+                <div class="bg-yellow-900/30 border border-yellow-500/50 p-3 rounded-xl mb-4">
+                    <p class="text-yellow-300 text-sm">⚠️ Send EXACTLY $250.00 for automatic verification</p>
+                </div>
+                
+                <button onclick="verifyPayment()" 
+                        class="w-full bg-green-600 hover:bg-green-500 py-3 rounded-xl font-bold transition mb-2">
+                    ✅ I Have Paid - Verify
+                </button>
+                
+                <button onclick="closeCrypto()" 
+                        class="w-full bg-slate-700 hover:bg-slate-600 py-2 rounded-xl transition">
+                    Close
+                </button>
+            </div>
+        </div>
+    
+    
+    <!-- Scripts -->
+    <script>
+        function showCrypto() {
+            document.getElementById('cryptoModal').classList.remove('hidden');
+        }
+        
+        function closeCrypto() {
+            document.getElementById('cryptoModal').classList.add('hidden');
+        }
+        
+        function copyWallet() {
+            navigator.clipboard.writeText('0xf244499abff0e7c6939f470de0914fc1c848f308');
+            alert('Wallet address copied!');
+        }
+        
+        function verifyPayment() {
+            alert('Scanning blockchain for your payment...\nThis may take 1-2 minutes.\n\nYou will be notified once confirmed.');
+            // In production, this would call an API endpoint
+        }
+        
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeCrypto();
+        });
+    </script>
+    
+</body>
+</html>

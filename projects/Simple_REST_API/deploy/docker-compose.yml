@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - API_KEY=${API_KEY}
+      - DEBUG=${DEBUG}
+      - PORT=${PORT}
+      - WEBSOCKET_HOST=${WEBSOCKET_HOST}
+      - WEBSOCKET_PORT=${WEBSOCKET_PORT}
+      - SESSION_TIMEOUT=${SESSION_TIMEOUT}
+      - LOG_LEVEL=${LOG_LEVEL}
+      - LOG_FILE_PATH=${LOG_FILE_PATH}
+    volumes:
+      - .:/app
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  app-network:

@@ -1,0 +1,11 @@
+# Singularity Cloud v2.0 - Environment Variables
+# Скопируйте этот файл и добавьте значения в Railway Variables
+
+# OpenAI API Key (обязательно)
+OPENAI_API_KEY=sk-your-openai-api-key-here
+
+# Telegram Bot Token (получите у @BotFather)
+TELEGRAM_BOT_TOKEN=1234567890:ABCdefGHIjklMNOpqrsTUVwxyz
+
+# Порт (Railway автоматически устанавливает)
+# PORT=8080

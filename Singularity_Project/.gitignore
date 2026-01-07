@@ -1,0 +1,41 @@
+# Секретные ключи - НИКОГДА не коммитить!
+.env
+
+# Виртуальное окружение Python
+venv/
+.venv/
+
+# Кэш Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Логи
+*.log
+logs/
+
+# Временные файлы
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+
+
+
+
+
+
+
+
+
+
+
+

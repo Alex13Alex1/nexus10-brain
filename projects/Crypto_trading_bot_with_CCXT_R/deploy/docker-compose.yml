@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  crypto-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crypto-trading-bot
+    restart: unless-stopped
+    environment:
+      - EXCHANGE_API_KEY=${EXCHANGE_API_KEY:-}
+      - EXCHANGE_API_SECRET=${EXCHANGE_API_SECRET:-}
+      - PAPER_TRADING=true
+      - TZ=UTC
+    env_file:
+      - .env.example
+    healthcheck:
+      test: ["CMD", "python", "-c", "import ccxt; print('OK')"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    volumes:
+      - ./logs:/app/logs
+      - ./trades.csv:/app/trades.csv
+    networks:
+      - bot-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  logs:
+
+networks:
+  bot-network:
+    driver: bridge

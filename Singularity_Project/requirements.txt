@@ -1,0 +1,39 @@
+# ============================================================
+# SINGULARITY v3.0 - Genesis Autonomy
+# Dependencies
+# ============================================================
+
+# === Web Framework ===
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
+
+# === AI / CrewAI ===
+crewai>=0.28.0
+crewai-tools>=0.2.0
+openai>=1.0.0
+langchain-openai>=0.0.5
+langchain-community>=0.0.10
+
+# === FREE Big Data Tools ===
+duckduckgo-search>=4.0.0
+wikipedia>=1.4.0
+
+# === Telegram Bot ===
+pyTelegramBotAPI>=4.14.0
+
+# === Data Processing ===
+pandas>=2.0.0
+pdfplumber>=0.10.0
+PyPDF2>=3.0.0
+
+# === PDF Generation ===
+fpdf2>=2.7.0
+reportlab>=4.0.0
+
+# === Utilities ===
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# === Scheduler & Database ===
+APScheduler>=3.10.0

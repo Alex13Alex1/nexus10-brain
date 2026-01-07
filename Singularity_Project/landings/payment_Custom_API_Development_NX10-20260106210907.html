@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | Custom API Development | Nexus 10 AI Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .gradient-text { background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white min-h-screen">
+    
+    <!-- Header -->
+    <header class="py-6 px-4 border-b border-slate-800/50 backdrop-blur-sm sticky top-0 z-40 bg-slate-950/80">
+        <div class="max-w-3xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center font-bold text-lg shadow-lg shadow-blue-500/20">
+                    N10
+                </div>
+                <div>
+                    <span class="text-xl font-bold gradient-text">NEXUS 10</span>
+                    <p class="text-xs text-slate-500">AI AGENCY</p>
+                </div>
+            </div>
+            <span class="text-sm text-slate-400 bg-slate-800/50 px-3 py-1 rounded-full">Secure Payment Portal</span>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="max-w-3xl mx-auto py-12 px-4">
+        
+        <!-- Invoice Card -->
+        <div class="bg-slate-900/50 backdrop-blur rounded-3xl border border-slate-700/50 p-8 mb-8 shadow-2xl">
+            
+            <!-- Client & PDF Download -->
+            <div class="flex items-start justify-between mb-8 pb-6 border-b border-slate-700/50">
+                <div>
+                    <p class="text-sm text-slate-400 mb-1">Prepared for</p>
+                    <p class="text-2xl font-semibold">Test Client</p>
+                </div>
+                
+        <a href="../invoices/invoice_NX10-20260106210907.pdf" download="invoice_NX10-20260106210907.pdf"
+           class="inline-flex items-center gap-2 bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg text-sm transition">
+            📥 Download PDF Invoice
+        </a>
+    
+            </div>
+            
+            <!-- Project Details -->
+            <div class="mb-8">
+                <p class="text-sm text-slate-400 mb-1">Project</p>
+                <h1 class="text-3xl font-bold text-blue-400 mb-3">Custom API Development</h1>
+                <p class="text-slate-300 leading-relaxed">REST API with authentication and database integration</p>
+            </div>
+            
+            <!-- Amount -->
+            <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 mb-8 text-center border border-slate-700/50">
+                <p class="text-sm text-slate-500 uppercase tracking-wider mb-2">Amount Due</p>
+                <p class="text-6xl font-bold mono text-green-400 mb-1">$500.00</p>
+                <p class="text-slate-400">USD</p>
+            </div>
+            
+            <!-- Reference -->
+            <div class="flex items-center justify-between text-sm text-slate-400 mb-8 bg-slate-800/30 px-4 py-3 rounded-xl">
+                <span>Invoice Reference:</span>
+                <code class="bg-slate-900 px-4 py-2 rounded-lg mono text-blue-300">NX10-20260106210907</code>
+            </div>
+            
+            <!-- Payment Buttons -->
+            <div class="space-y-4">
+                <p class="text-center text-slate-400 text-sm mb-4">Choose your preferred payment method:</p>
+                
+            <a href="https://buy.stripe.com/test_5kQcN4gu04FUa0wfSCaEE00?client_reference_id=NX10-20260106210907&locale=en" target="_blank" 
+               class="block w-full bg-indigo-600 hover:bg-indigo-500 py-4 rounded-xl font-bold transition text-center shadow-lg hover:shadow-indigo-500/30">
+                💳 Pay with Card
+            </a>
+        
+
+            <button onclick="showBankDetails()" 
+                    class="w-full bg-emerald-600 hover:bg-emerald-500 py-4 rounded-xl font-bold transition shadow-lg hover:shadow-emerald-500/30">
+                🏦 Bank Transfer (SEPA/SWIFT)
+            </button>
+        
+
+            <button onclick="showCrypto()" 
+                    class="w-full bg-orange-500 hover:bg-orange-400 py-4 rounded-xl font-bold transition shadow-lg hover:shadow-orange-500/30">
+                💎 Pay with Crypto (USDC/USDT)
+            </button>
+        
+            </div>
+            
+        </div>
+        
+        <!-- What's Included -->
+        <div class="bg-slate-900/30 rounded-2xl p-6 border border-slate-700/30">
+            <h3 class="font-semibold mb-4 text-slate-300 text-lg">✨ What's Included:</h3>
+            <div class="grid grid-cols-2 gap-4 text-slate-400 text-sm">
+                <div class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> Complete source code
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> Documentation
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> Deployment guide
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> Up to 3 revisions
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> 7-day support
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> Instant delivery
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="py-8 px-4 text-center text-slate-500 text-sm border-t border-slate-800/50">
+        <p class="font-medium">Powered by <span class="gradient-text font-bold">Nexus 10 AI Agency</span></p>
+        <p class="mt-2 text-xs text-slate-600">Autonomous AI Development • Secure Payments • Professional Quality</p>
+    </footer>
+    
+    <!-- Bank Modal -->
+    
+        <div id="bankModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+            <div class="bg-slate-800 rounded-2xl p-6 max-w-lg w-full border border-emerald-500/50 shadow-2xl">
+                <h3 class="text-xl font-bold text-emerald-400 mb-4">🏦 Bank Transfer Details</h3>
+                
+                <div class="space-y-3 mb-6">
+                    <div class="bg-slate-900 p-3 rounded-lg">
+                        <p class="text-xs text-slate-500 uppercase mb-1">Bank Name</p>
+                        <p class="font-semibold">Wise</p>
+                    </div>
+                    
+                    <div class="bg-slate-900 p-3 rounded-lg">
+                        <p class="text-xs text-slate-500 uppercase mb-1">Account Holder</p>
+                        <p class="font-semibold">Advanced Medicinal Consulting Ltd</p>
+                    </div>
+                    
+                    <div class="bg-slate-900 p-3 rounded-lg">
+                        <p class="text-xs text-slate-500 uppercase mb-1">IBAN</p>
+                        <code class="text-emerald-300 select-all">BE29905516841164</code>
+                    </div>
+                    
+                    <div class="bg-slate-900 p-3 rounded-lg">
+                        <p class="text-xs text-slate-500 uppercase mb-1">SWIFT/BIC</p>
+                        <code class="text-emerald-300 select-all">TRWIBEB1XXX</code>
+                    </div>
+                    
+                    <div class="bg-slate-900 p-3 rounded-lg">
+                        <p class="text-xs text-slate-500 uppercase mb-1">Payment Reference (Required)</p>
+                        <code class="text-yellow-400 font-bold select-all">NX10-20260106210907</code>
+                    </div>
+                    
+                    <div class="bg-slate-900 p-3 rounded-lg">
+                        <p class="text-xs text-slate-500 uppercase mb-1">Amount</p>
+                        <p class="text-2xl font-mono font-bold text-green-400">$500.00 USD</p>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-900/30 border border-yellow-500/50 p-3 rounded-xl mb-4">
+                    <p class="text-yellow-300 text-sm">⚠️ Important: Include reference <strong>NX10-20260106210907</strong> in payment description</p>
+                </div>
+                
+                <button onclick="closeBankModal()" 
+                        class="w-full bg-slate-700 hover:bg-slate-600 py-3 rounded-xl font-bold transition">
+                    Close
+                </button>
+            </div>
+        </div>
+    
+    
+    <!-- Crypto Modal -->
+    
+        <div id="cryptoModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+            <div class="bg-slate-800 rounded-2xl p-6 max-w-lg w-full border border-orange-500/50 shadow-2xl">
+                <h3 class="text-xl font-bold text-orange-400 mb-4">💎 Crypto Payment</h3>
+                
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div class="bg-slate-900 p-3 rounded-lg text-center">
+                        <p class="text-xs text-slate-500 uppercase mb-1">Network</p>
+                        <p class="font-bold text-purple-400">Polygon</p>
+                    </div>
+                    <div class="bg-slate-900 p-3 rounded-lg text-center">
+                        <p class="text-xs text-slate-500 uppercase mb-1">Token</p>
+                        <p class="font-bold">USDC / USDT</p>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-900 p-4 rounded-xl mb-4 text-center">
+                    <p class="text-xs text-slate-500 uppercase mb-1">Amount to Send</p>
+                    <p class="text-3xl font-mono font-bold text-green-400">$500.00</p>
+                </div>
+                
+                <div class="bg-slate-950 p-4 rounded-xl mb-4">
+                    <p class="text-xs text-orange-500 uppercase mb-2">Wallet Address (Polygon Network)</p>
+                    <code id="walletAddress" class="text-sm break-all text-orange-200 select-all block mb-2">0xf244499abff0e7c6939f470de0914fc1c848f308</code>
+                    <button onclick="copyWallet()" class="text-xs bg-orange-600 hover:bg-orange-500 px-4 py-2 rounded-lg transition">
+                        📋 Copy Address
+                    </button>
+                </div>
+                
+                <div class="bg-yellow-900/30 border border-yellow-500/50 p-3 rounded-xl mb-4">
+                    <p class="text-yellow-300 text-sm">⚠️ Send EXACTLY $500.00 for automatic verification</p>
+                    <p class="text-yellow-400/70 text-xs mt-1">Payments are scanned every 5 minutes</p>
+                </div>
+                
+                <div id="verifyStatus" class="hidden bg-blue-900/30 border border-blue-500/50 p-3 rounded-xl mb-4">
+                    <p class="text-blue-300 text-sm" id="verifyMessage">⏳ Scanning blockchain...</p>
+                </div>
+                
+                <button onclick="verifyPayment()" id="verifyBtn"
+                        class="w-full bg-green-600 hover:bg-green-500 py-3 rounded-xl font-bold transition mb-2">
+                    ✅ I Have Paid - Verify Now
+                </button>
+                
+                <button onclick="closeCrypto()" 
+                        class="w-full bg-slate-700 hover:bg-slate-600 py-2 rounded-xl transition">
+                    Close
+                </button>
+            </div>
+        </div>
+    
+    
+    <!-- Scripts -->
+    <script>
+        // Bank Modal
+        function showBankDetails() {
+            document.getElementById('bankModal').classList.remove('hidden');
+        }
+        
+        function closeBankModal() {
+            document.getElementById('bankModal').classList.add('hidden');
+        }
+        
+        // Crypto Modal
+        function showCrypto() {
+            document.getElementById('cryptoModal').classList.remove('hidden');
+        }
+        
+        function closeCrypto() {
+            document.getElementById('cryptoModal').classList.add('hidden');
+            document.getElementById('verifyStatus').classList.add('hidden');
+        }
+        
+        function copyWallet() {
+            const wallet = document.getElementById('walletAddress').textContent;
+            navigator.clipboard.writeText(wallet);
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Copied!';
+            btn.classList.add('bg-green-600');
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.remove('bg-green-600');
+            }, 2000);
+        }
+        
+        async function verifyPayment() {
+            const statusDiv = document.getElementById('verifyStatus');
+            const statusMsg = document.getElementById('verifyMessage');
+            const btn = document.getElementById('verifyBtn');
+            
+            statusDiv.classList.remove('hidden');
+            statusMsg.textContent = '⏳ Scanning Polygon blockchain for your payment...';
+            btn.disabled = true;
+            btn.textContent = 'Scanning...';
+            
+            // Simulate blockchain scan (in production, this calls real API)
+            setTimeout(() => {
+                // For demo - in production this would check real blockchain
+                statusMsg.textContent = '🔍 Checking recent transactions...';
+                
+                setTimeout(() => {
+                    statusMsg.textContent = '📡 Please wait 1-2 minutes for blockchain confirmation. You will receive a notification once confirmed.';
+                    statusDiv.classList.remove('bg-blue-900/30', 'border-blue-500/50');
+                    statusDiv.classList.add('bg-yellow-900/30', 'border-yellow-500/50');
+                    btn.disabled = false;
+                    btn.textContent = '🔄 Check Again';
+                }, 2000);
+            }, 1500);
+        }
+        
+        // Close modals on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeCrypto();
+                closeBankModal();
+            }
+        });
+        
+        // Close modal when clicking outside
+        document.querySelectorAll('#cryptoModal, #bankModal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>

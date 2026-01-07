@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+    environment:
+      - APP_ENV=production
+      - APP_DEBUG=false
+      - APP_PORT=8765
+    volumes:
+      - app_data:/app/data
+    networks:
+      - app_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8765/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+
+volumes:
+  app_data:
+
+networks:
+  app_network:

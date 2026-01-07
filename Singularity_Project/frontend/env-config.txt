@@ -1,0 +1,17 @@
+# API URL - создай файл .env.local и скопируй нужную строку
+
+# Локальная разработка:
+VITE_API_URL=http://127.0.0.1:8000
+
+# После деплоя на Railway:
+VITE_API_URL=https://your-app.railway.app
+
+
+
+
+
+
+
+
+
+

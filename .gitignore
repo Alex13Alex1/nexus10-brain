@@ -1,0 +1,104 @@
+# ============================================
+# NEXUS 10 AI AGENCY - Git Ignore
+# ============================================
+
+# === VIRTUAL ENVIRONMENTS ===
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# === ENVIRONMENT VARIABLES (SECRETS!) ===
+.env
+.env.local
+.env.*.local
+*.env
+
+# === PYTHON CACHE ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# === DATABASES (Local data) ===
+*.db
+*.sqlite
+*.sqlite3
+data/*.db
+
+# === LOGS ===
+*.log
+logs/
+pipeline.log
+bot.log
+autonomous.log
+
+# === IDE ===
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# === OS ===
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# === GENERATED FILES ===
+invoices/*.pdf
+landings/*.html
+legal_documents/*.pdf
+workspace/
+
+# === NODE (for frontend) ===
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# === TEMPORARY ===
+tmp/
+temp/
+*.tmp
+*.temp
+temp_vision.png
+
+# === SECRETS & KEYS ===
+*.pem
+*.key
+secrets/
+credentials/
+
+# === PROJECT OUTPUTS (optional - uncomment if needed) ===
+# projects/
+
+# === KEEP THESE (empty dirs) ===
+!data/.gitkeep
+!invoices/.gitkeep
+!landings/.gitkeep
+!legal_documents/.gitkeep

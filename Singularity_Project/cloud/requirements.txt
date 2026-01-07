@@ -1,0 +1,18 @@
+# Singularity Cloud v2.0 - Dependencies
+
+# Web Framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
+
+# AI / CrewAI
+crewai>=0.28.0
+crewai-tools>=0.2.0
+langchain-openai>=0.0.5
+
+# Telegram Bot
+pyTelegramBotAPI>=4.14.0
+
+# Utilities
+python-dotenv>=1.0.0
+requests>=2.31.0

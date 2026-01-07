@@ -1,0 +1,31 @@
+{
+    "complexity": "HIGH",
+    "experts": [
+        {
+            "role": "Backend Developer (Python)",
+            "goal": "Develop a robust and scalable backend system for warehouse management.",
+            "backstory": "The backend is crucial for handling inventory data, processing transactions, and ensuring data integrity. A Python developer will leverage frameworks like Django or Flask to build a reliable system."
+        },
+        {
+            "role": "Frontend Developer (React)",
+            "goal": "Create an intuitive and responsive user interface for the ecosystem.",
+            "backstory": "The frontend is the primary interaction point for users. A React developer will ensure the UI is user-friendly and integrates seamlessly with the backend."
+        },
+        {
+            "role": "Data Scientist / AI Engineer",
+            "goal": "Develop an AI-driven sales analytics module that generates PDF reports.",
+            "backstory": "The AI component is essential for providing insights into sales data. A Data Scientist will use machine learning models to analyze trends and automate report generation."
+        },
+        {
+            "role": "DevOps Engineer (Docker, K8s, CI/CD)",
+            "goal": "Ensure smooth deployment and operation of the ecosystem.",
+            "backstory": "DevOps practices are critical for maintaining system reliability and scalability. The engineer will set up CI/CD pipelines and manage containerization and orchestration."
+        },
+        {
+            "role": "Database Architect (SQL, NoSQL, Redis)",
+            "goal": "Design and implement a robust database architecture for efficient data storage and retrieval.",
+            "backstory": "A well-structured database is vital for performance and scalability. The architect will choose appropriate database technologies and optimize data models."
+        }
+    ],
+    "reasoning": "These roles cover the essential components of the ecosystem: backend development for core functionality, frontend development for user interaction, AI for analytics, DevOps for deployment and maintenance, and database architecture for data management. Together, they ensure a comprehensive and efficient solution."
+}

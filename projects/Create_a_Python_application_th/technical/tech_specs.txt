@@ -1,0 +1,38 @@
+**Technical Specification for Real-Time Bitcoin Price Tracker**
+
+1. **Programming Language and Environment**
+   - **Python**: The application will be developed using Python due to its extensive libraries and ease of handling APIs and data.
+
+2. **Libraries and Tools**
+   - **requests**: For making HTTP requests to the public API to fetch Bitcoin prices.
+   - **pandas**: To handle and manipulate data, particularly useful for creating and appending data to CSV files.
+   - **time**: To manage scheduled tasks, ensuring the script runs every minute.
+   - **logging**: To implement error logging and monitor application status.
+   - **schedule** (optional): For more advanced task scheduling and management.
+
+3. **Public API Options**
+   - **CoinGecko API**: A reliable and free API to fetch the current Bitcoin price.
+   - **Binance API**: Another option that provides real-time cryptocurrency data, suitable for more advanced features.
+
+4. **Components and Functions**
+   - **API Integration**: 
+     - Use the `requests` library to connect to the chosen API.
+     - Implement JSON parsing to extract Bitcoin price data.
+     - Handle API errors and rate limits with retries and logging.
+   - **Data Storage**:
+     - Use `pandas` to structure data with timestamps.
+     - Save or append data to a CSV file every minute, ensuring data consistency.
+     - Handle file access conflicts with appropriate file locks or checks.
+   - **Real-Time Monitoring**:
+     - Calculate percentage change in Bitcoin price.
+     - Compare current price with the last recorded price from the CSV file.
+     - Print a warning if the change exceeds 1%.
+   - **Testing and Optimization**:
+     - Test the script for various scenarios, including network issues.
+     - Optimize API calls and ensure data freshness with minimal resource usage.
+     - Implement logging for application monitoring and alert tracking.
+   - **Deployment**:
+     - Schedule the script to run continuously using a task scheduler or as a daemon.
+     - Document setup, usage instructions, and troubleshooting steps.
+
+By leveraging these libraries and APIs, the Python application will efficiently track real-time Bitcoin prices, store data reliably, and alert users to significant market movements, ensuring a comprehensive solution for monitoring cryptocurrency trends.

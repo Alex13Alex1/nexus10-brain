@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  app:
+    build: ./deploy
+    container_name: project_app
+    volumes:
+      - ./source_code:/app/source_code
+    environment:
+      - PYTHONUNBUFFERED=1

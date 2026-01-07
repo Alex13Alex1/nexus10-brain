@@ -1,0 +1,77 @@
+# ================================================
+# NEXUS-6 AUTONOMOUS BUSINESS SYSTEM
+# Configuration File - Copy to .env
+# ================================================
+
+# === CORE API KEYS ===
+OPENAI_API_KEY=sk-proj-YOUR_OPENAI_KEY
+OPENAI_BACKUP_KEY=sk-proj-YOUR_BACKUP_KEY
+
+# === TELEGRAM ===
+TELEGRAM_BOT_TOKEN=YOUR_TELEGRAM_BOT_TOKEN
+ADMIN_CHAT_ID=YOUR_TELEGRAM_CHAT_ID
+
+# === SEARCH (for Hunter agent) ===
+SERPER_API_KEY=YOUR_SERPER_KEY
+
+# === PAYMENTS: FIAT ===
+# Wise (for bank transfers/invoices)
+WISE_TAG=your_wise_username
+
+# Stripe (for card payments)
+STRIPE_PAYMENT_LINK=https://buy.stripe.com/YOUR_LINK
+
+# === PAYMENTS: CRYPTO ===
+# Your wallet address for receiving USDC/USDT on Polygon
+MY_CRYPTO_WALLET=0xYOUR_WALLET_ADDRESS
+
+# Polygonscan API key (free at polygonscan.com)
+POLYGONSCAN_API_KEY=YOUR_POLYGONSCAN_KEY
+
+# === ECONOMICS ===
+# Minimum order amount in USD
+MIN_ORDER_AMOUNT=50
+
+# Minimum profit margin (percent)
+MIN_MARGIN_PERCENT=20
+
+# ================================================
+# HOW TO GET THESE KEYS:
+# ================================================
+#
+# OPENAI_API_KEY:
+#   1. Go to platform.openai.com
+#   2. Create API key in Settings > API Keys
+#
+# TELEGRAM_BOT_TOKEN:
+#   1. Message @BotFather on Telegram
+#   2. Send /newbot and follow instructions
+#
+# SERPER_API_KEY:
+#   1. Go to serper.dev
+#   2. Sign up and get free API key
+#
+# WISE_TAG:
+#   1. Open Wise app/website
+#   2. Go to your profile
+#   3. Find your @username (pay.me link)
+#
+# STRIPE_PAYMENT_LINK:
+#   1. Go to Stripe Dashboard
+#   2. Create a Payment Link
+#   3. Copy the URL
+#
+# MY_CRYPTO_WALLET:
+#   1. Open MetaMask/TrustWallet
+#   2. Copy your Polygon wallet address
+#   3. Make sure it starts with 0x
+#
+# POLYGONSCAN_API_KEY:
+#   1. Go to polygonscan.com
+#   2. Create free account
+#   3. Get API key from account settings
+#
+# ================================================
+
+
+

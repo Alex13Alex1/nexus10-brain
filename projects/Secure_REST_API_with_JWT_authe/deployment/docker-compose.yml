@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:5000/protected"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: always
