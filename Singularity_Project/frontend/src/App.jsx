@@ -1,9 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
 
-// 🔧 НАСТРОЙКА: Замени на свой URL от Railway после деплоя
-// Локально: 'http://127.0.0.1:8000'
-// Облако:   'https://your-app.railway.app'
-const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
+// 🔧 НАСТРОЙКА API URL
+// Production: Railway backend
+// Development: localhost
+const API_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.PROD 
+    ? 'https://web-production-4f4fb.up.railway.app' 
+    : 'http://127.0.0.1:8000')
 
 // Компонент переключателя темы
 const ThemeToggle = ({ isDark, onToggle }) => (

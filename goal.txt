@@ -14,3 +14,5 @@ Crypto trading bot with CCXT, RSI and Bollinger Bands strategy, CSV trade loggin
 
 
 
+
+
