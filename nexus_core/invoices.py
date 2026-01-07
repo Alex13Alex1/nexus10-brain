@@ -264,3 +264,4 @@ def generate_invoice_from_order(order: Dict) -> str:
     )
 
 
+

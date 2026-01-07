@@ -389,3 +389,4 @@ def log_action(message: str, component: str = "SYSTEM"):
     get_database().log(message, component=component)
 
 
+

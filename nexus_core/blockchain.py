@@ -320,3 +320,4 @@ def get_crypto_balance() -> Dict:
     return eye.get_balance_24h()
 
 
+
