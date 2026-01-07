@@ -3234,25 +3234,49 @@ def stop_bot():
 
 
 # ============================================================
-# RAILWAY HEALTH CHECK SERVER
-# Railway needs an HTTP server on PORT to detect the app is running
+# RAILWAY REST API SERVER (Health + Frontend API)
+# Handles health checks AND frontend API requests
 # ============================================================
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
+import uuid
 
-class HealthHandler(BaseHTTPRequestHandler):
-    """HTTP handler for Railway health checks"""
+# Mission storage (in-memory)
+MISSIONS = {}
+
+class APIHandler(BaseHTTPRequestHandler):
+    """HTTP handler for Railway health checks and Frontend API"""
     
     def log_message(self, format, *args):
         """Suppress access logs"""
         pass
     
+    def _send_cors_headers(self):
+        """Send CORS headers for frontend access"""
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+    
+    def _send_json(self, data, status=200):
+        """Send JSON response with CORS"""
+        self.send_response(status)
+        self.send_header('Content-Type', 'application/json')
+        self._send_cors_headers()
+        self.end_headers()
+        self.wfile.write(json.dumps(data, indent=2).encode())
+    
+    def do_OPTIONS(self):
+        """Handle CORS preflight"""
+        self.send_response(200)
+        self._send_cors_headers()
+        self.end_headers()
+    
     def do_GET(self):
         """Handle GET requests"""
         if self.path == '/' or self.path == '/health':
-            # Health check response
+            # Health check response - Frontend expects "Online" in status
             response = {
-                "status": "ok",
+                "status": "Online",
                 "service": "NEXUS 10 AI Agency",
                 "version": "10.0",
                 "bot_running": SYSTEM_STATE.get("running", False),
@@ -3261,11 +3285,7 @@ class HealthHandler(BaseHTTPRequestHandler):
                 "deals_closed": SYSTEM_STATE.get("deals_closed", 0),
                 "timestamp": datetime.now().isoformat()
             }
-            
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
-            self.end_headers()
-            self.wfile.write(json.dumps(response, indent=2).encode())
+            self._send_json(response)
         
         elif self.path == '/status':
             # Detailed status
@@ -3278,7 +3298,7 @@ class HealthHandler(BaseHTTPRequestHandler):
             
             response = {
                 "system": "NEXUS 10 AI Agency",
-                "status": "production",
+                "status": "Online",
                 "bot": {
                     "running": SYSTEM_STATE.get("running", False),
                     "started_at": SYSTEM_STATE.get("started_at", None)
@@ -3290,24 +3310,69 @@ class HealthHandler(BaseHTTPRequestHandler):
                     "leads": stats
                 }
             }
-            
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
-            self.end_headers()
-            self.wfile.write(json.dumps(response, indent=2).encode())
+            self._send_json(response)
+        
+        elif self.path.startswith('/mission/'):
+            # Get mission status
+            mission_id = self.path.split('/')[-1]
+            if mission_id in MISSIONS:
+                self._send_json(MISSIONS[mission_id])
+            else:
+                self._send_json({"status": "not_found", "mission_id": mission_id}, 404)
         
         else:
-            # 404 for other paths
-            self.send_response(404)
-            self.end_headers()
-            self.wfile.write(b'Not Found')
+            self._send_json({"error": "Not Found"}, 404)
+    
+    def do_POST(self):
+        """Handle POST requests"""
+        if self.path == '/launch':
+            # Launch mission endpoint for frontend
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length).decode('utf-8') if content_length > 0 else '{}'
+            
+            try:
+                data = json.loads(body)
+                prompt = data.get('prompt', '')
+                
+                # Generate mission ID
+                mission_id = str(uuid.uuid4())[:8].upper()
+                
+                # Store mission
+                MISSIONS[mission_id] = {
+                    "mission_id": mission_id,
+                    "status": "running",
+                    "prompt": prompt,
+                    "started_at": datetime.now().isoformat(),
+                    "agents": ["STRATEGIST", "DEVELOPER", "REVIEWER", "SECURITY"]
+                }
+                
+                # Start async processing (simulate for now)
+                def process_mission():
+                    time.sleep(15)  # Simulate work
+                    if mission_id in MISSIONS:
+                        MISSIONS[mission_id]["status"] = "completed"
+                        MISSIONS[mission_id]["completed_at"] = datetime.now().isoformat()
+                
+                threading.Thread(target=process_mission, daemon=True).start()
+                
+                self._send_json({
+                    "mission_id": mission_id,
+                    "status": "running",
+                    "message": "Mission launched successfully"
+                })
+                
+            except Exception as e:
+                self._send_json({"error": str(e)}, 500)
+        
+        else:
+            self._send_json({"error": "Not Found"}, 404)
 
 
 def start_health_server():
-    """Start HTTP health check server on Railway PORT"""
+    """Start REST API server on Railway PORT"""
     port = int(os.getenv('PORT', 8080))
-    server = HTTPServer(('0.0.0.0', port), HealthHandler)
-    print("[HTTP] Health server on port {}".format(port))
+    server = HTTPServer(('0.0.0.0', port), APIHandler)
+    print("[HTTP] REST API server on port {}".format(port))
     server.serve_forever()
 
 
