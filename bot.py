@@ -3263,7 +3263,7 @@ class APIHandler(BaseHTTPRequestHandler):
         self.send_header('Content-Type', 'application/json')
         self._send_cors_headers()
         self.end_headers()
-        self.wfile.write(json.dumps(data, indent=2).encode())
+        self.wfile.write(json.dumps(data, indent=2, default=str).encode())
     
     def do_OPTIONS(self):
         """Handle CORS preflight"""
