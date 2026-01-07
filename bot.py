@@ -3370,10 +3370,16 @@ class APIHandler(BaseHTTPRequestHandler):
 
 def start_health_server():
     """Start REST API server on Railway PORT"""
-    port = int(os.getenv('PORT', 8080))
-    server = HTTPServer(('0.0.0.0', port), APIHandler)
-    print("[HTTP] REST API server on port {}".format(port))
-    server.serve_forever()
+    try:
+        port = int(os.getenv('PORT', 8080))
+        print("[HTTP] Starting REST API server on port {}...".format(port))
+        server = HTTPServer(('0.0.0.0', port), APIHandler)
+        print("[HTTP] REST API server started successfully on port {}".format(port))
+        server.serve_forever()
+    except Exception as e:
+        print("[HTTP ERROR] Failed to start health server: {}".format(e))
+        import traceback
+        traceback.print_exc()
 
 
 # ============================================================
