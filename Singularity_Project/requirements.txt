@@ -19,6 +19,9 @@ fpdf2>=2.7.0
 # === Data Processing ===
 pandas>=2.0.0
 
+# === Streamlit Admin UI ===
+streamlit>=1.30.0
+
 # === Optional - CrewAI (comment out if deploy fails) ===
 # crewai>=0.28.0
 # langchain-openai>=0.0.5
