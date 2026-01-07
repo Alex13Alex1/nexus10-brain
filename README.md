@@ -111,7 +111,7 @@ python bot.py
 
 | Agent | Role |
 |-------|------|
-| 🎯 Hunter | Find $500+ contracts |
+| 🎯 Hunter | Find $50+ contracts (no upper limit) |
 | 🧠 Architect | Technical planning |
 | 💻 Doer | Code implementation |
 | ✅ QA Critic | Quality validation |
@@ -215,4 +215,5 @@ MIT License - Use freely for personal and commercial projects.
 ---
 
 *Built with ❤️ and AI*
+
 

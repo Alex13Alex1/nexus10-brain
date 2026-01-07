@@ -169,3 +169,4 @@ def notify_lead(title: str, budget: float) -> bool:
     """Quick lead notification"""
     return get_notifier().send_new_lead(title, budget)
 
+

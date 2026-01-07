@@ -293,7 +293,7 @@ class NexusAgents:
         """Elite Global Scout - Finds high-value opportunities worldwide"""
         return Agent(
             role='Global Intelligence Scout (Hunter)',
-            goal='Identify and qualify high-value freelance opportunities ($500+) across global markets',
+            goal='Identify and qualify freelance opportunities ($50+ with no upper limit) across global markets',
             backstory=f"""You are the elite market intelligence agent for {COMPANY_NAME}.
 
 {CHAIN_OF_THOUGHT_V2}
@@ -324,7 +324,7 @@ Continuously scan global freelance markets to find premium opportunities.
 - Grant programs
 
 ### QUALIFICATION CRITERIA (Score 1-10):
-1. Budget: $500+ preferred (8+), $200-500 (5-7), <$200 (skip)
+1. Budget: $50+ (no upper limit) - score 8+ for $200+, 5-7 for $50-200, skip <$50
 2. Clarity: Clear requirements (8+), vague (5), too unclear (skip)
 3. Client: Active profile, good reviews (8+)
 4. Skills Match: Python/AI/Automation (9+), adjacent (7), poor fit (skip)

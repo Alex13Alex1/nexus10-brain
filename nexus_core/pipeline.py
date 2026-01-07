@@ -349,3 +349,4 @@ def get_pipeline_status() -> Dict:
     """Quick status"""
     return get_pipeline().get_status()
 
+

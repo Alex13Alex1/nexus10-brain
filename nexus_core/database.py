@@ -388,3 +388,4 @@ def log_action(message: str, component: str = "SYSTEM"):
     """Quick log"""
     get_database().log(message, component=component)
 
+

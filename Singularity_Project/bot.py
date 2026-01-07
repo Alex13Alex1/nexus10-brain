@@ -88,7 +88,7 @@ def cmd_start(m):
 Elite Autonomous Business System
 
 I automatically:
-- Hunt for $500+ contracts worldwide
+- Hunt for $50+ contracts worldwide (no upper limit)
 - Generate production-ready code (GPT-4o)
 - Self-heal and fix code issues
 - Manage payments (Card, Bank, Crypto)
@@ -1354,13 +1354,13 @@ def cmd_weekly_report(m):
 
 
 # ============================================================
-# REGIONAL SEARCH ($500+)
+# REGIONAL SEARCH ($50+ no upper limit)
 # ============================================================
 
 @bot.message_handler(commands=['hunt_usa', 'usa'])
 def cmd_hunt_usa(m):
     """Hunt high-budget jobs in USA market"""
-    bot.send_message(m.chat.id, "🇺🇸 Searching USA market for $500+ projects...")
+    bot.send_message(m.chat.id, "🇺🇸 Searching USA market for $50+ projects (no upper limit)...")
     
     def do_hunt():
         try:
