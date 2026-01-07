@@ -3233,16 +3233,100 @@ def stop_bot():
     print("[OK] Bot stopped")
 
 
+# ============================================================
+# RAILWAY HEALTH CHECK SERVER
+# Railway needs an HTTP server on PORT to detect the app is running
+# ============================================================
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import json
+
+class HealthHandler(BaseHTTPRequestHandler):
+    """HTTP handler for Railway health checks"""
+    
+    def log_message(self, format, *args):
+        """Suppress access logs"""
+        pass
+    
+    def do_GET(self):
+        """Handle GET requests"""
+        if self.path == '/' or self.path == '/health':
+            # Health check response
+            response = {
+                "status": "ok",
+                "service": "NEXUS 10 AI Agency",
+                "version": "10.0",
+                "bot_running": SYSTEM_STATE.get("running", False),
+                "started_at": SYSTEM_STATE.get("started_at", None),
+                "hunts": SYSTEM_STATE.get("hunts", 0),
+                "deals_closed": SYSTEM_STATE.get("deals_closed", 0),
+                "timestamp": datetime.now().isoformat()
+            }
+            
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps(response, indent=2).encode())
+        
+        elif self.path == '/status':
+            # Detailed status
+            try:
+                from database import NexusDB
+                db = NexusDB()
+                stats = db.get_leads_summary()
+            except:
+                stats = {"total": 0}
+            
+            response = {
+                "system": "NEXUS 10 AI Agency",
+                "status": "production",
+                "bot": {
+                    "running": SYSTEM_STATE.get("running", False),
+                    "started_at": SYSTEM_STATE.get("started_at", None)
+                },
+                "metrics": {
+                    "hunts": SYSTEM_STATE.get("hunts", 0),
+                    "deals_closed": SYSTEM_STATE.get("deals_closed", 0),
+                    "total_earned": SYSTEM_STATE.get("total_earned", 0),
+                    "leads": stats
+                }
+            }
+            
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps(response, indent=2).encode())
+        
+        else:
+            # 404 for other paths
+            self.send_response(404)
+            self.end_headers()
+            self.wfile.write(b'Not Found')
+
+
+def start_health_server():
+    """Start HTTP health check server on Railway PORT"""
+    port = int(os.getenv('PORT', 8080))
+    server = HTTPServer(('0.0.0.0', port), HealthHandler)
+    print("[HTTP] Health server on port {}".format(port))
+    server.serve_forever()
+
+
+# ============================================================
+# MAIN - Railway Entry Point
+# ============================================================
 if __name__ == "__main__":
     if not TOKEN:
         print("[ERROR] TELEGRAM_BOT_TOKEN not found in .env!")
         print("Add: TELEGRAM_BOT_TOKEN=your_token")
         sys.exit(1)
     
+    # Start health check server in background (for Railway)
+    health_thread = threading.Thread(target=start_health_server, daemon=True)
+    health_thread.start()
+    print("[OK] Health server started")
+    
     try:
         start_bot()
     except KeyboardInterrupt:
         print("\n[!] Interrupted by user")
         stop_bot()
-
-
