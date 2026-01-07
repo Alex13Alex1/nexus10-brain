@@ -98,7 +98,7 @@ const Terminal = ({ logs, isDark }) => {
           <div className="w-3 h-3 rounded-full bg-green-500/80" />
         </div>
         <span className={`text-xs ml-2 uppercase tracking-widest ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>
-          Singularity Terminal
+          NEXUS 10 Terminal
         </span>
       </div>
       
@@ -136,7 +136,7 @@ export default function App() {
   const [isDark, setIsDark] = useState(true)
   const [logs, setLogs] = useState([
     { time: '00:00:00', message: '$ system_init --status success', type: 'success' },
-    { time: '00:00:01', message: '→ Singularity Core v1.0 загружен', type: 'info' },
+    { time: '00:00:01', message: '→ NEXUS 10 Core v1.0 загружен', type: 'info' },
     { time: '00:00:02', message: '→ Агенты в режиме ожидания...', type: 'default' },
   ])
 
@@ -219,7 +219,7 @@ export default function App() {
     setIsRunning(true)
     setActiveAgent(1)
     addLog(`$ start_mission --task "${task}"`, 'default')
-    addLog('→ Инициализация протокола Singularity...', 'info')
+    addLog('→ Инициализация протокола NEXUS 10...', 'info')
 
     try {
       const res = await fetch(`${API_URL}/launch`, {
@@ -280,9 +280,9 @@ export default function App() {
             </div>
             <div>
               <h1 className={`text-2xl font-bold tracking-[0.2em] ${isDark ? 'text-white' : 'text-slate-800'}`}>
-                SINGULARITY
+                NEXUS 10
               </h1>
-              <p className="text-xs text-indigo-500 tracking-widest">AUTONOMOUS AI SWARM v1.0</p>
+              <p className="text-xs text-indigo-500 tracking-widest">AI AGENCY v10.0</p>
             </div>
           </div>
           
